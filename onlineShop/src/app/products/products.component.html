@@ -1,0 +1,48 @@
+<div 
+class="item-list"
+*ngFor="let item of this.jsonData.products.data.items let i = index"
+>
+    <p>{{this.jsonData.products.data.items[i].name}}</p>
+    <button 
+      (click)=
+      "buttonClicked(this.jsonData.products.data.items[i].id)">Details
+   </button>
+    <button 
+      style="float: right;"
+      (click)="addToCart(this.jsonData.products.data.items[i])"
+      >Add to card
+   </button>
+   <div 
+   class="cart">
+      <div *ngFor="let cartProduct of this.shoppingCart">
+        <p>{{cartProduct.name }}</p>
+        <p>{{cartProduct.price}}</p>
+      </div>
+      <div *ngFor="let cartProduct of shoppingCart">
+         <p>{{ cartProduct.name }}</p>
+         <p>Price: {{ cartProduct.price | currency }}</p>
+         <button (click)="removeFromCart(cartProduct)">Remove from Cart</button>
+       </div>
+   </div>
+            <div 
+             class="details-info"
+             *ngIf="showTable && this.jsonData.products.data.items[i].id==this.productId"
+             [ngClass]="{buttonClicked:this.showTable}">
+             <ul>
+                <li>ID: {{this.jsonData.products.data.items[i].id}}</li>
+                <li>Description: {{this.jsonData.products.data.items[i].description}}</li>
+                <li>Features: {{this.jsonData.products.data.items[i].features}}</li>
+                <li>Price: {{this.jsonData.products.data.items[i].price}}</li>
+                <li>Keywords: {{this.jsonData.products.data.items[i].keywords}}</li>
+                <li>Url: <a href="">{{this.jsonData.products.data.items[i].url}}</a></li>
+                <li>Category: {{this.jsonData.products.data.items[i].category}}</li>
+                <li>Subcategory: {{this.jsonData.products.data.items[i].subcategory}}</li>
+                  <img
+                  *ngFor="let image of this.jsonData.products.data.items[i].images let j=index"
+                  [src]="image " alt="No available picture"  style="width: 70px; height: 50px;margin:5px"> 
+             </ul>
+            </div>
+            <hr>
+</div>
+
+

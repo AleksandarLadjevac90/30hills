@@ -1,0 +1,27 @@
+*{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    
+}
+button {
+    margin: 5px;
+    background:rgb(101, 162, 180);
+    border-style:outset;
+    color: rgb(10, 10, 10);
+    box-shadow: 0 0 5px rgba(154, 165, 94, 0.794);
+    cursor: grab;
+}
+body {
+    background-color: rgba(235, 241, 150, 0.945);
+    
+}
+button:hover {
+    background-color: rgb(20, 55, 107);
+}
+a.active:hover {
+    color: rgb(19, 19, 58);
+}
+a {
+    text-decoration: none;
+    
+}
