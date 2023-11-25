@@ -10,26 +10,45 @@ export class ProductsComponent implements OnInit {
   showTable:boolean=false;
   productId:string='';
   shoppingCart:any[]=[];
-  
+  showOrderedItems:boolean=false;
+  totalPrice:number=0;
+  itemCount:number=0;
+  closeDetails:string="View/Close";
+  searchQuery:string= "";
+
   buttonClicked(param:string){
   this.showTable=!this.showTable;
   this.productId=param;
  }
 
 
- addToCart(product:any){
+ addToCart(product:any, id:string){
   const productCopy = { ...product };
   this.shoppingCart.push(productCopy)
-
+  this.productId=id;
+  this.showOrderedItems=true;
+  this.totalPrice += parseFloat(product.price);
+  this.itemCount++;
  }
 
  removeFromCart(product: any) {
   const index = this.shoppingCart.findIndex(cartProduct => cartProduct === product);
 
   if (index !== -1) {
+    this.totalPrice -= parseFloat(product.price);
     this.shoppingCart.splice(index, 1);
   }
+  this.itemCount--
+
+  if (this.itemCount < 0) {
+    this.itemCount = 0;
+  }
+  if(this.itemCount==0){
+    this.totalPrice=0;
+  }
 }
+
+
 
   constructor(private productServiceInfo:ProductinfoService) { }
 
@@ -46,5 +65,5 @@ export class ProductsComponent implements OnInit {
    //   console.log(err));
    // ---NOT WORKING DUE TO CORS POLICY-----    
   
-
+//addToCart(this.jsonData.products.data.items[i],this.jsonData.products.data.items[i].id
 }

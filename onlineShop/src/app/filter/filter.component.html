@@ -1,0 +1,27 @@
+<h3
+style="text-align: center;"
+>CATEGORIES
+</h3>
+<div
+class="filter-container">
+    <button *ngFor=
+    "let category of availableCategories" 
+    (click)="selectedCategory = category">
+    {{ category }}
+  </button> 
+</div>
+
+<div 
+ *ngFor="let item of filterProductsByCategory(selectedCategory)">
+  <div
+     class="item-list">
+    <p>NAME: {{ item.name }}</p>
+    <hr>
+    <p>DESCRIPTION: {{ item.description }}</p>
+    <hr>
+    <p>PRICE: {{ item.price }}</p>
+    <hr>
+    <p>KEYWORDS: {{ item.keywords }}</p>
+  </div>
+  
+  

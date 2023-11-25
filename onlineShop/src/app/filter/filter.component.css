@@ -1,0 +1,10 @@
+.filter-container {
+    width:100% ;
+     display: flex;
+     justify-content:center;}
+     .item-list {
+        border: 2px solid rgb(31, 19, 19);
+        word-wrap: normal;
+        width: 25%;
+        padding: 4px;
+     }
